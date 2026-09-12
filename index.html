@@ -3,255 +3,185 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mathematics for the Physics Olympiad — Jugantor Dey</title>
-<meta name="description" content="A free Bengali-language self-study mathematics series in 22 chapters, from class-5 arithmetic to vector calculus, written for physics olympiad preparation.">
+<title>Jugantor Dey</title>
+<meta name="description" content="Jugantor Dey — physics olympiad, and free Bengali-language mathematics handouts for olympiad preparation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+Bengali:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="masthead">
-  <h1>Mathematics for the Physics Olympiad</h1>
-  <p class="byline">Jugantor Dey</p>
+  <!-- Put a square photo at img/photo.jpg. It is cropped to a circle by CSS.
+       If you don't want a photo, delete the <img> line below. -->
+  <img class="portrait" src="img/photo.jpg" alt="Jugantor Dey">
+  <h1>Jugantor Dey</h1>
+  <nav class="social">
+    <a target="_blank" href="https://www.linkedin.com/in/jugantordey/">LinkedIn</a>
+    <a target="_blank" href="mailto:d.jugantor2007@gmail.com">Email</a>
+    <a target="_blank" href="https://www.instagram.com/jugantor_2007/">Instagram</a>
+  </nav>
 </header>
 
 <main>
 
-  <section class="intro">
-    <p>This is a complete self-study mathematics series written in Bengali. It starts at class-5 arithmetic and ends at vector calculus, covering exactly as much mathematics as the physics olympiad demands and no more. No teacher is required. Read the 22 chapters in order. Every PDF is free.</p>
+  <!-- ====================================================================
+       BIO — this is a draft. Rewrite it in your own voice, and delete
+       anything you would rather not have on a public page.
+       ==================================================================== -->
+  <section class="bio">
+    <p><a target="_blank" href="https://ndc.edu.bd/">Notre Dame College, Dhaka</a> (2024-2026)<br><a target="_blank" href="https://www.iscm.edu.bd/">Ideal School And College, Dhaka</a> (2015-2024)</p>
 
-    <p>Each chapter comes in two editions. The <strong>student edition</strong> has no solutions; the <strong>full edition</strong> includes worked solutions to every problem. Download the student edition first and attempt the problems yourself. Stay stuck for at least half an hour before you look at a solution. The number beside each problem, from [1] to [5], is its difficulty.</p>
+    <p>I represented Bangladesh at the <a target="_blank" href="https://www.apho2025.sa/">Asian Physics Olympiad 2025</a> in Dhahran, Saudi Arabia, where I earned an Honorable Mention. I was on the national team for the <a target="_blank" href="https://apho2026.kr/">Asian Physics Olympiad 2026</a> in Busan, South Korea. I worked as a Proof (Executive of Academics) at the <a target="_blank" href="https://ndmcbd.org/">Notre Dame Math Club</a> (2025-26), where I co-edited <a target="blank" href="https://www.rokomari.com/book/545183/the-set-1st-volume-proof-technique-and-combinatorics"><i>The Set</i></a>, a series of olympiad mathematics articles written by club members. (Only the first volume has been published yet.)</p> 
 
-    <p>Chapter titles are in English; everything inside the PDFs is in Bengali.</p>
+    <p>
+Bangladeshi students have almost nothing serious or organised to read in their own language, sitting between school textbooks and university-level texts in English. That gap does more damage to physics here than any shortage of talent. There is no shortage of curiosity; what stops students from going deeper is not understanding the mathematics physics runs on, calculus above all.<br>
+That was my own situation. Coming from the Bangla-medium curriculum, I found the start rough, and the English material harder going than the physics inside it. I doubt much has changed for students with the same background. These notes are my attempt at removing two of those obstacles at once: the language, and the absence of anyone to guide a student through. They cover the calculus the physics olympiad actually needs, and assume nothing beyond arithmetic, LCM and GCD, fractions and decimals.</p>
+
+    <p>Feel free to reach me at <a href="mailto:d.jugantor2007@gmail.com">d.jugantor2007@gmail.com</a>.</p>
   </section>
 
-  <section class="tier" id="foundations">
-    <h2>Foundations</h2>
-    <p class="tier-note">Chapters 0–1. No prerequisites beyond class-5 arithmetic.</p>
+  <!-- ====================================================================
+       HANDOUTS
+       Each chapter title links to the student edition; (Sol) links to the
+       edition with worked solutions.
+       ==================================================================== -->
+  <section class="work">
+    <h2>Mathematics for the Physics Olympiad</h2>
 
-    <article class="ch">
-      <span class="num" aria-hidden="true">0</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 0. </span>Put on Your Life Jacket!</h3>
-        <p class="topics" lang="bn">ঋণাত্মক সংখ্যা ও সংখ্যারেখা · বর্গমূল · মূলদ ও অমূলদ সংখ্যা · অসংজ্ঞায়িত, অনির্ণেয় ও অসীম · কোণের পরিমাপ</p>
-        <p class="dl"><a href="pdf/ch00-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch00-full.pdf">With solutions</a></p>
-      </div>
-    </article>
+    <p class="lede">A complete self-study mathematics series in Bengali, in 22 chapters. It starts at class-5 arithmetic and ends at vector calculus, covering as much mathematics as the physics olympiad demands and no more. No teacher is required; read the chapters in order.</p>
 
-    <article class="ch">
-      <span class="num" aria-hidden="true">1</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 1. </span>Before You Dive In</h3>
-        <p class="topics" lang="bn">কেন গণিত শিখব · প্রমাণ কী · গাণিতিক ভাষা · কীভাবে এই সিরিজ পড়বে</p>
-        <p class="dl"><a href="pdf/ch01-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch01-full.pdf">With solutions</a></p>
-      </div>
-    </article>
+    <p class="lede">Each chapter title below links to the student edition. <b>(Sol)</b> links to the same chapter with worked solutions to every problem. Attempt the problems first, and stay stuck for at least half an hour before you open a solution. The number beside each problem, from [1] to [5], is its difficulty.</p>
+
+    <h3>Foundations</h3>
+    <p class="tier-note">No prerequisites beyond class-5 arithmetic.</p>
+
+    <div class="ch">
+      <p class="ch-title">0. <a href="pdf/ch00-student.pdf">Put on Your Life Jacket!</a> <a class="sol" href="pdf/ch00-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">ঋণাত্মক সংখ্যা ও সংখ্যারেখা · বর্গমূল · মূলদ ও অমূলদ সংখ্যা · অসংজ্ঞায়িত, অনির্ণেয় ও অসীম · কোণের পরিমাপ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">1. <a href="pdf/ch01-student.pdf">Before You Dive In</a> <a class="sol" href="pdf/ch01-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">কেন গণিত শিখব · প্রমাণ কী · গাণিতিক ভাষা · কীভাবে এই সিরিজ পড়বে</p>
+    </div>
+
+    <h3>Basic</h3>
+    <p class="tier-note">School algebra and geometry, rebuilt for calculus.</p>
+
+    <div class="ch">
+      <p class="ch-title">2. <a href="pdf/ch02-student.pdf">Algebra I</a> <a class="sol" href="pdf/ch02-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">চলক ও ধ্রুবক · পদ ও রাশি · অভেদ বনাম সমীকরণ · সূচক · সমীকরণ সমাধান</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">3. <a href="pdf/ch03-student.pdf">Factorization</a> <a class="sol" href="pdf/ch03-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">সাধারণ উৎপাদক · মধ্যপদ বিশ্লেষণ · উৎপাদক ও ভাগশেষ উপপাদ্য · দ্বিঘাত সমীকরণ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">4. <a href="pdf/ch04-student.pdf">Function I</a> <a class="sol" href="pdf/ch04-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">সেট ও ব্যবধি · ফাংশন কী · ডোমেইন, কো-ডোমেইন, রেঞ্জ · এক-এক ও সার্বিক · বিপরীত ফাংশন · খণ্ডিত ফাংশন</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">5. <a href="pdf/ch05-student.pdf">Euclidean Geometry I</a> <a class="sol" href="pdf/ch05-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">বিন্দু, রেখা, কোণ · কোণের শ্রেণিবিভাগ · ত্রিভুজ · থেলিস ও পিথাগোরাস · ক্ষেত্রফল ও পরিসীমা</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">6. <a href="pdf/ch06-student.pdf">Coordinate Geometry I</a> <a class="sol" href="pdf/ch06-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">কার্তেসীয় সমতল · দূরত্ব ও মধ্যবিন্দু · ঢাল · সরলরেখা · বৃত্ত</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">7. <a href="pdf/ch07-student.pdf">Trigonometry I</a> <a class="sol" href="pdf/ch07-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">ত্রিভুজ থেকে অনুপাত · একক বৃত্ত · মৌলিক অভেদ · যোগ ও বিয়োগ সূত্র · বাস্তব প্রয়োগ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">8. <a href="pdf/ch08-student.pdf">Algebra II</a> <a class="sol" href="pdf/ch08-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">ভগ্নাংশ সূচক · লগারিদম · সংখ্যা <i lang="en">e</i> · অনুক্রম ও ধারা · সিগমা নোটেশন · দ্বিপদী উপপাদ্য</p>
+    </div>
+
+    <h3>Intermediate</h3>
+    <p class="tier-note">The starting point of calculus.</p>
+
+    <div class="ch">
+      <p class="ch-title">9. <a href="pdf/ch09-student.pdf">Inequalities</a> <a class="sol" href="pdf/ch09-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">অসমতার নিয়ম · AM–GM · ত্রিভুজ অসমতা · কোশি-শোয়ার্জ · চরম মান নির্ণয়</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">10. <a href="pdf/ch10-student.pdf">Function II</a> <a class="sol" href="pdf/ch10-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">সূচকীয় ফাংশন · লগারিদমীয় ফাংশন · বৃদ্ধি ও ক্ষয় · ফাংশনের রূপান্তর · জোড় ও বিজোড় ফাংশন</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">11. <a href="pdf/ch11-student.pdf">Euclidean Geometry II — Solid Geometry</a> <a class="sol" href="pdf/ch11-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">তল ও ঘনবস্তু · প্রিজম ও পিরামিড · সিলিন্ডার, কোণক, গোলক · পৃষ্ঠতল ও আয়তন · ত্রিমাত্রিক কোণ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">12. <a href="pdf/ch12-student.pdf">Coordinate Geometry II</a> <a class="sol" href="pdf/ch12-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">অক্ষের স্থানান্তর ও ঘূর্ণন · কনিক · পোলার স্থানাঙ্ক · অন্যান্য বক্ররৈখিক স্থানাঙ্ক</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">13. <a href="pdf/ch13-student.pdf">Trigonometry II</a> <a class="sol" href="pdf/ch13-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">গুণফল সূত্র · একাধিক কোণ · বিপরীত ত্রিকোণমিতিক ফাংশন · ছোট কোণের আসন্নীকরণ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">14. <a href="pdf/ch14-student.pdf">Limits</a> <a class="sol" href="pdf/ch14-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">লিমিট কী · অসীমতা ও অসংজ্ঞায়িত রাশি · সীমার নিয়ম · ধারাবাহিকতা · অরৈখিকতা</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">15. <a href="pdf/ch15-student.pdf">Differentiation</a> <a class="sol" href="pdf/ch15-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">পরিবর্তনের হার · সংজ্ঞা থেকে ডেরিভেটিভ · নিয়মসমূহ · চেইন রুল · চরম মান · আংশিক ডেরিভেটিভ · টেইলর সিরিজ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">16. <a href="pdf/ch16-student.pdf">Differentials &amp; Differential Elements</a> <a class="sol" href="pdf/ch16-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">ডেরিভেটিভ বনাম ডিফারেনশিয়াল · <i lang="en">dx</i>-এর অর্থ · ক্ষুদ্র উপাদান · রৈখিক আসন্নীকরণ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">17. <a href="pdf/ch17-student.pdf">Integration</a> <a class="sol" href="pdf/ch17-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">যোগফলের সীমা হিসেবে ইন্টিগ্রাল · মৌলিক উপপাদ্য · কৌশল · বক্ররেখার দৈর্ঘ্য · ক্ষেত্রফল ও আয়তন</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">18. <a href="pdf/ch18-student.pdf">Complex Numbers</a> <a class="sol" href="pdf/ch18-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">কেন জটিল সংখ্যা দরকার · মৌলিক অপারেশন · আর্গঁ চিত্র · অয়লারের সূত্র · প্রয়োগ</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">19. <a href="pdf/ch19-student.pdf">Ordinary Differential Equations</a> <a class="sol" href="pdf/ch19-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">ODE কী · ক্রম ও ঘাত · সমসত্ত্বতা · নোটেশন · সমাধানের কৌশল · ভৌত উদাহরণ</p>
+    </div>
+
+    <h3>Advanced</h3>
+    <p class="tier-note">The terminal chapters</p>
+
+    <div class="ch">
+      <p class="ch-title">20. <a href="pdf/ch20-student.pdf">Vectors</a> <a class="sol" href="pdf/ch20-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">ভেক্টর কী · উপাংশ ও অভিক্ষেপ · যোগ ও বিয়োগ · ডট গুণন · ক্রস গুণন · ম্যাট্রিক্স নোটেশন</p>
+    </div>
+
+    <div class="ch">
+      <p class="ch-title">21. <a href="pdf/ch21-student.pdf">Vector Calculus</a> <a class="sol" href="pdf/ch21-full.pdf">(Sol)</a></p>
+      <p class="topics" lang="bn">স্কেলার ও ভেক্টর ক্ষেত্র · গ্র্যাডিয়েন্ট · ডাইভারজেন্স · কার্ল · ল্যাপ্লাসিয়ান · রেখা, তল ও আয়তন ইন্টিগ্রাল · মৌলিক উপপাদ্যসমূহ · ডিরাক ডেল্টা · বক্ররৈখিক স্থানাঙ্কে</p>
+    </div>
+
+    <p class="note">Some of the problems are taken and adapted from James Stewart, <i>Calculus - Early Transcendentals</i>, and Howard Anton, <i>Calculus</i>; my thanks to both authors. The remaining problems and all of the exposition are my own. <b>These PDFs are free to download and share, but may not be sold or used commercially.</b></p>
+
+    <p class="note">If you find an error, a typo, or an explanation that does not work, please write to me at <a href="mailto:d.jugantor2007@gmail.com">d.jugantor2007@gmail.com</a>. Every correction goes into the next revision.</p>
   </section>
 
-  <section class="tier" id="basic">
-    <h2>Basic</h2>
-    <p class="tier-note">Chapters 2–8. School algebra and geometry, rebuilt for olympiad use.</p>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">2</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 2. </span>Algebra I</h3>
-        <p class="topics" lang="bn">চলক ও ধ্রুবক · পদ ও রাশি · অভেদ বনাম সমীকরণ · সূচক · সমীকরণ সমাধান</p>
-        <p class="dl"><a href="pdf/ch02-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch02-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">3</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 3. </span>Factorization</h3>
-        <p class="topics" lang="bn">সাধারণ উৎপাদক · মধ্যপদ বিশ্লেষণ · উৎপাদক ও ভাগশেষ উপপাদ্য · দ্বিঘাত সমীকরণ</p>
-        <p class="dl"><a href="pdf/ch03-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch03-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">4</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 4. </span>Function I</h3>
-        <p class="topics" lang="bn">সেট ও ব্যবধি · ফাংশন কী · ডোমেইন, কো-ডোমেইন, রেঞ্জ · এক-এক ও সার্বিক · বিপরীত ফাংশন · খণ্ডিত ফাংশন</p>
-        <p class="dl"><a href="pdf/ch04-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch04-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">5</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 5. </span>Euclidean Geometry I</h3>
-        <p class="topics" lang="bn">বিন্দু, রেখা, কোণ · কোণের শ্রেণিবিভাগ · ত্রিভুজ · থেলিস ও পিথাগোরাস · ক্ষেত্রফল ও পরিসীমা</p>
-        <p class="dl"><a href="pdf/ch05-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch05-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">6</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 6. </span>Coordinate Geometry I</h3>
-        <p class="topics" lang="bn">কার্তেসীয় সমতল · দূরত্ব ও মধ্যবিন্দু · ঢাল · সরলরেখা · বৃত্ত</p>
-        <p class="dl"><a href="pdf/ch06-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch06-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">7</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 7. </span>Trigonometry I</h3>
-        <p class="topics" lang="bn">ত্রিভুজ থেকে অনুপাত · একক বৃত্ত · মৌলিক অভেদ · যোগ ও বিয়োগ সূত্র · বাস্তব প্রয়োগ</p>
-        <p class="dl"><a href="pdf/ch07-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch07-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">8</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 8. </span>Algebra II</h3>
-        <p class="topics" lang="bn">ভগ্নাংশ সূচক · লগারিদম · সংখ্যা <i lang="en">e</i> · অনুক্রম ও ধারা · সিগমা নোটেশন · দ্বিপদী উপপাদ্য</p>
-        <p class="dl"><a href="pdf/ch08-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch08-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-  </section>
-
-  <section class="tier" id="intermediate">
-    <h2>Intermediate</h2>
-    <p class="tier-note">Chapters 9–19. Calculus begins here.</p>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">9</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 9. </span>Inequalities</h3>
-        <p class="topics" lang="bn">অসমতার নিয়ম · AM–GM · ত্রিভুজ অসমতা · কোশি-শোয়ার্জ · চরম মান নির্ণয়</p>
-        <p class="dl"><a href="pdf/ch09-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch09-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">10</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 10. </span>Function II</h3>
-        <p class="topics" lang="bn">সূচকীয় ফাংশন · লগারিদমীয় ফাংশন · বৃদ্ধি ও ক্ষয় · ফাংশনের রূপান্তর · জোড় ও বিজোড় ফাংশন</p>
-        <p class="dl"><a href="pdf/ch10-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch10-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">11</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 11. </span>Euclidean Geometry II — Solid Geometry</h3>
-        <p class="topics" lang="bn">তল ও ঘনবস্তু · প্রিজম ও পিরামিড · সিলিন্ডার, কোণক, গোলক · পৃষ্ঠতল ও আয়তন · ত্রিমাত্রিক কোণ</p>
-        <p class="dl"><a href="pdf/ch11-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch11-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">12</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 12. </span>Coordinate Geometry II</h3>
-        <p class="topics" lang="bn">অক্ষের স্থানান্তর ও ঘূর্ণন · কনিক · পোলার স্থানাঙ্ক · অন্যান্য বক্ররৈখিক স্থানাঙ্ক</p>
-        <p class="dl"><a href="pdf/ch12-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch12-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">13</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 13. </span>Trigonometry II</h3>
-        <p class="topics" lang="bn">গুণফল সূত্র · একাধিক কোণ · বিপরীত ত্রিকোণমিতিক ফাংশন · ছোট কোণের আসন্নীকরণ</p>
-        <p class="dl"><a href="pdf/ch13-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch13-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">14</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 14. </span>Limits</h3>
-        <p class="topics" lang="bn">লিমিট কী · অসীমতা ও অসংজ্ঞায়িত রাশি · সীমার নিয়ম · ধারাবাহিকতা · অরৈখিকতা</p>
-        <p class="dl"><a href="pdf/ch14-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch14-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">15</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 15. </span>Differentiation</h3>
-        <p class="topics" lang="bn">পরিবর্তনের হার · সংজ্ঞা থেকে ডেরিভেটিভ · নিয়মসমূহ · চেইন রুল · চরম মান · আংশিক ডেরিভেটিভ · টেইলর সিরিজ</p>
-        <p class="dl"><a href="pdf/ch15-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch15-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">16</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 16. </span>Differentials &amp; Differential Elements</h3>
-        <p class="topics" lang="bn">ডেরিভেটিভ বনাম ডিফারেনশিয়াল · <i lang="en">dx</i>-এর অর্থ · ক্ষুদ্র উপাদান · রৈখিক আসন্নীকরণ</p>
-        <p class="dl"><a href="pdf/ch16-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch16-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">17</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 17. </span>Integration</h3>
-        <p class="topics" lang="bn">যোগফলের সীমা হিসেবে ইন্টিগ্রাল · মৌলিক উপপাদ্য · কৌশল · বক্ররেখার দৈর্ঘ্য · ক্ষেত্রফল ও আয়তন</p>
-        <p class="dl"><a href="pdf/ch17-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch17-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">18</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 18. </span>Complex Numbers</h3>
-        <p class="topics" lang="bn">কেন জটিল সংখ্যা দরকার · মৌলিক অপারেশন · আর্গঁ চিত্র · অয়লারের সূত্র · প্রয়োগ</p>
-        <p class="dl"><a href="pdf/ch18-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch18-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">19</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 19. </span>Ordinary Differential Equations</h3>
-        <p class="topics" lang="bn">ODE কী · ক্রম ও ঘাত · সমসত্ত্বতা · নোটেশন · সমাধানের কৌশল · ভৌত উদাহরণ</p>
-        <p class="dl"><a href="pdf/ch19-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch19-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-  </section>
-
-  <section class="tier" id="advanced">
-    <h2>Advanced</h2>
-    <p class="tier-note">Chapters 20–21. The terminal chapters, aimed at the APhO and IPhO theory papers.</p>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">20</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 20. </span>Vectors</h3>
-        <p class="topics" lang="bn">ভেক্টর কী · উপাংশ ও অভিক্ষেপ · যোগ ও বিয়োগ · ডট গুণন · ক্রস গুণন · ম্যাট্রিক্স নোটেশন</p>
-        <p class="dl"><a href="pdf/ch20-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch20-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-
-    <article class="ch">
-      <span class="num" aria-hidden="true">21</span>
-      <div class="ch-body">
-        <h3><span class="sr-only">Chapter 21. </span>Vector Calculus</h3>
-        <p class="topics" lang="bn">স্কেলার ও ভেক্টর ক্ষেত্র · গ্র্যাডিয়েন্ট · ডাইভারজেন্স · কার্ল · ল্যাপ্লাসিয়ান · রেখা, তল ও আয়তন ইন্টিগ্রাল · মৌলিক উপপাদ্যসমূহ · ডিরাক ডেল্টা · বক্ররৈখিক স্থানাঙ্কে</p>
-        <p class="dl"><a href="pdf/ch21-student.pdf">Student edition</a><span class="sep">/</span><a href="pdf/ch21-full.pdf">With solutions</a></p>
-      </div>
-    </article>
-  </section>
-
-  <section class="colophon">
-    <h2>Sources and use</h2>
-    <p>A number of the problems in this series are taken and adapted from James Stewart, <i>Calculus</i>, and Howard Anton, <i>Calculus</i>. My thanks to both authors. The remaining problems and all of the exposition are my own.</p>
-    <p>These PDFs are free to download and share. They may not be sold or used commercially.</p>
-    <p>If you find an error, a typo, or an explanation that does not make sense, write to me at <a href="mailto:d.jugantor2007@gmail.com">d.jugantor2007@gmail.com</a>. Every correction goes into the next revision.</p>
-  </section>
-
+  
 </main>
 
 <footer>
