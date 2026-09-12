@@ -1,21 +1,22 @@
 /* ==========================================================================
-   Mathematics for the Physics Olympiad — stylesheet
-   Page face: Tinos (Times-metric, so the site matches the TeX Gyre Termes
-   used inside the PDFs). Bengali topic lines: Noto Serif Bengali.
+   Jugantor Dey — stylesheet
+   Latin: Source Sans 3. Bengali: Noto Sans Bengali (any element carrying
+   lang="bn" picks it up automatically).
    ========================================================================== */
 
 :root {
-  --paper:  #fbfaf7;
-  --ink:    #1d1a16;
-  --muted:  #6d6760;
-  --rule:   #ded8cd;
-  --link:   #114b5f;
-  --link-hover: #8a3324;
+  --paper:   #ffffff;
+  --ink:     #2b2b2b;
+  --muted:   #797979;
+  --faint:   #a8a8a8;
+  --rule:    #e6e6e6;
+  --link:    #1f6feb;
+  --link-hover: #b4472e;
 
-  --en: "Tinos", "Times New Roman", serif;
-  --bn: "Noto Serif Bengali", serif;
+  --en: "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+  --bn: "Noto Sans Bengali", sans-serif;
 
-  --measure: 40rem;
+  --measure: 46rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -24,12 +25,13 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  padding: 3.5rem 1.5rem 4rem;
+  padding: 4rem 1.5rem 4rem;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--en);
-  font-size: 1.125rem;
-  line-height: 1.65;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
 }
 
@@ -38,132 +40,132 @@ main, .masthead, footer {
   margin-inline: auto;
 }
 
-/* Any Bengali text on the page carries lang="bn" and picks up the Bengali
-   face automatically. */
-[lang="bn"] {
-  font-family: var(--bn);
-  line-height: 1.8;
-}
-
+[lang="bn"] { font-family: var(--bn); line-height: 1.85; }
 [lang="bn"] [lang="en"] { font-family: var(--en); }
 
 /* --- masthead ----------------------------------------------------------- */
 
 .masthead {
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--ink);
-  margin-bottom: 2.25rem;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.portrait {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1.5rem;
 }
 
 .masthead h1 {
-  font-size: 2.125rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-.byline {
-  font-size: 1.0625rem;
-  margin: 0.55rem 0 0;
+  font-size: 2.25rem;
+  font-weight: 300;
   color: var(--muted);
+  letter-spacing: 0.01em;
+  margin: 0 0 1rem;
+  line-height: 1.2;
 }
 
-/* --- intro -------------------------------------------------------------- */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.9375rem;
+}
 
-.intro p { margin: 0 0 1.1rem; }
-.intro strong { font-weight: 700; }
+/* --- bio ---------------------------------------------------------------- */
 
-/* --- tiers -------------------------------------------------------------- */
+.bio { margin-bottom: 4rem; }
+.bio p { margin: 0 0 1.15rem; }
 
-.tier { margin-top: 3rem; }
+/* --- work sections ------------------------------------------------------ */
 
-.tier h2 {
-  font-size: 1.375rem;
-  font-weight: 700;
-  margin: 0;
-  padding-bottom: 0.4rem;
+.work { margin-bottom: 4rem; }
+
+.work h2 {
+  font-size: 1.875rem;
+  font-weight: 300;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+
+.work h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 2.25rem 0 0.15rem;
+  padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--rule);
-  line-height: 1.3;
 }
+
+.lede { margin: 0 0 1rem; }
 
 .tier-note {
   font-size: 0.9375rem;
   color: var(--muted);
-  margin: 0.55rem 0 0;
-  line-height: 1.6;
+  margin: 0.5rem 0 1rem;
 }
 
 /* --- chapter rows ------------------------------------------------------- */
 
-.ch {
-  display: grid;
-  grid-template-columns: 2.5rem 1fr;
-  gap: 0 0.85rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--rule);
-}
+.ch { margin: 0 0 1.1rem; }
 
-.ch:last-child { border-bottom: none; }
-
-.num {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--muted);
+.ch-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
   line-height: 1.45;
-  text-align: right;
-  font-variant-numeric: lining-nums;
 }
 
-.ch-body h3 {
-  font-size: 1.1875rem;
-  font-weight: 700;
-  line-height: 1.35;
-  margin: 0.1rem 0 0.3rem;
+.ch-title .sol {
+  font-weight: 400;
+  font-size: 0.9375rem;
 }
 
 .topics {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--muted);
-  margin: 0 0 0.5rem;
+  margin: 0.1rem 0 0;
 }
 
-.dl {
+/* --- generic entries (Other Work, Writing) ------------------------------ */
+
+.entry {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.entry-title {
+  margin: 0 0 0.3rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.entry-desc {
   margin: 0;
   font-size: 0.9375rem;
-  line-height: 1.6;
-}
-
-.dl .sep {
-  color: var(--rule);
-  margin: 0 0.6rem;
-}
-
-/* --- sources and footer ------------------------------------------------- */
-
-.colophon {
-  margin-top: 3.25rem;
-  padding-top: 1.6rem;
-  border-top: 2px solid var(--ink);
-}
-
-.colophon h2 {
-  font-size: 1.1875rem;
-  font-weight: 700;
-  margin: 0 0 0.85rem;
-}
-
-.colophon p {
-  font-size: 0.9375rem;
-  line-height: 1.7;
   color: var(--muted);
-  margin: 0 0 0.85rem;
+}
+
+/* --- notes and footer --------------------------------------------------- */
+
+.note {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 1.5rem 0 0;
 }
 
 footer {
-  margin-top: 2.75rem;
-  font-size: 0.875rem;
-  color: var(--muted);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8125rem;
+  color: var(--faint);
+  text-align: center;
 }
 
 footer p { margin: 0; }
@@ -173,44 +175,31 @@ footer p { margin: 0; }
 a {
   color: var(--link);
   text-decoration: none;
-  border-bottom: 1px solid rgba(17, 75, 95, 0.32);
-  padding-bottom: 0.05em;
 }
 
-a:hover { color: var(--link-hover); border-bottom-color: currentColor; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
 
 a:focus-visible {
   outline: 2px solid var(--link-hover);
-  outline-offset: 3px;
-  border-bottom-color: transparent;
-}
-
-/* --- utilities ---------------------------------------------------------- */
-
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* --- small screens ------------------------------------------------------ */
 
 @media (max-width: 34rem) {
-  body { padding: 2.25rem 1.15rem 3rem; font-size: 1.0625rem; }
-  .masthead h1 { font-size: 1.75rem; }
-  .ch { grid-template-columns: 1.85rem 1fr; gap: 0 0.7rem; padding: 1.1rem 0; }
-  .num { font-size: 1.0625rem; }
-  .ch-body h3 { font-size: 1.0625rem; }
-  .dl .sep { margin: 0 0.4rem; }
+  body { padding: 2.5rem 1.15rem 3rem; font-size: 1rem; }
+  .portrait { width: 132px; height: 132px; }
+  .masthead h1 { font-size: 1.875rem; }
+  .masthead { margin-bottom: 2.5rem; }
+  .bio, .work { margin-bottom: 3rem; }
+  .work h2 { font-size: 1.5rem; }
+  .social { gap: 1.15rem; }
 }
 
 /* --- print -------------------------------------------------------------- */
 
 @media print {
-  body { background: #fff; color: #000; }
-  a { color: #000; border-bottom: none; }
+  body { color: #000; }
+  a { color: #000; }
 }
