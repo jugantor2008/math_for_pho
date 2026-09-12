@@ -1,0 +1,322 @@
+%% ============================================================================
+%%  bnhandout.sty  --  Bangla olympiad-handout class file
+%%  Layout reverse-engineered from Kevin Zhou's "Physics Olympiad Handouts".
+%%  Every number below was measured from the reference PDF; see STYLE-SPEC.md.
+%%
+%%  COMPILER: XeLaTeX  (required -- fontspec + Bengali shaping)
+%%  Put Kalpurush.ttf in ./fonts/  (an OFL copy ships with this project)
+%% ============================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bnhandout}[2026/09/09 v1.1 Bangla olympiad handout layout]
+
+%% ---- package options -------------------------------------------------------
+% Bengali digits (০১২৩) are ON by default for this series.
+% [latinnum] -> opt out, back to Western 1 2 3
+% [nosol]    -> hide every \begin{sol}...\end{sol} block (problem-only edition)
+\newif\ifbnh@bnnum \bnh@bnnumtrue
+\newif\ifbnh@showsol \bnh@showsoltrue
+\DeclareOption{bnnum}{\bnh@bnnumtrue}
+\DeclareOption{latinnum}{\bnh@bnnumfalse}
+\DeclareOption{nosol}{\bnh@showsolfalse}
+\ProcessOptions\relax
+
+% ---------------------------------------------------------------------------
+% 1. PAGE GEOMETRY   (measured: text block 6.5in x 9in, body top 1in+2pt)
+% ---------------------------------------------------------------------------
+\RequirePackage[letterpaper,
+  textwidth=6.5in,      % x = 72bp .. 540bp
+  textheight=9in,       % y = 73.99bp .. 721.99bp
+  top=74.27pt,          % = 1in + 2pt  (TeX pt; 1in = 72.27pt)
+  headheight=14pt,
+  headsep=25pt,
+  footskip=30pt,
+  heightrounded=false]{geometry}
+
+% ---------------------------------------------------------------------------
+% 2. FONTS
+%    Text  : Kalpurush (Bangla + Latin).  Kalpurush has NO bold and NO italic
+%            master, so fontspec synthesises them (AutoFakeBold/AutoFakeSlant).
+%    Maths : left as Computer Modern on purpose -- unicode-math is NOT loaded,
+%            so every formula looks exactly like the reference handout.
+% ---------------------------------------------------------------------------
+\RequirePackage{fontspec}
+\RequirePackage{etoolbox}
+\RequirePackage{amsmath,amssymb}
+
+\newcommand{\bnh@fontopts}{%
+  Script=Bengali, Language=Default,
+  AutoFakeBold=1.8, AutoFakeSlant=0.2,
+  Ligatures=TeX}
+
+\IfFontExistsTF{Kalpurush}
+  {\setmainfont{Kalpurush}[\bnh@fontopts]}
+  {\setmainfont{Kalpurush.ttf}[Path=./fonts/,\bnh@fontopts]}
+
+% The reference sets section headings in a sans face (CMSSBX10).  Kalpurush
+% ships no sans companion and no bold master, so \sffamily is pointed at
+% Kalpurush too and headings are distinguished by weight + size only.
+% To restore the two-tone look, install a Bangla sans (e.g. Noto Sans Bengali)
+% in ./fonts/ and replace the \setsansfont line below.
+\IfFontExistsTF{Kalpurush}
+  {\setsansfont{Kalpurush}[\bnh@fontopts]}
+  {\setsansfont{Kalpurush.ttf}[Path=./fonts/,\bnh@fontopts]}
+
+\newfontfamily\latinrm{Latin Modern Roman}[Ligatures=TeX]
+\newfontfamily\latinsf{Latin Modern Sans}[Ligatures=TeX]
+
+% \en{...} typesets an English run in Latin Modern Roman (Computer Modern),
+% i.e. matching the maths.  Plain English typed without \en uses Kalpurush's
+% own Latin glyphs.
+\newcommand{\en}[1]{{\latinrm #1}}
+
+% Reference leading is 14pt on a 10.95pt body (linespread 1.03).  Kalpurush is
+% a tall face (ascent 1.0em, descent 0.4em) so Bangla needs more air; the knob
+% is here, change one number to retune the whole series.
+\newcommand{\bnhleading}{1.30}
+\linespread{\bnhleading}\selectfont
+
+% ---------------------------------------------------------------------------
+% 3. COLOURS
+%    Deviation from the reference PDF: the four box colours were replaced with
+%    a light palette (violet / grey / yellow / orange).  Every title band is
+%    light enough that the box title is set in BLACK, not white -- see the
+%    coltitle key in section 7.  Contrast of black text, WCAG 2.1:
+%      fills  #F0EBFC 18.0:1  #EEEEF0 18.1:1  #FFF8DB 19.7:1  #FFEEDC 18.5:1
+%      bands  #B29BE8  8.8:1  #9EA0A6  8.0:1  #E8BC3E 11.7:1  #F2A65C 10.4:1
+%    (AA needs 4.5:1, AAA needs 7:1.)
+%    pointcolor and linkcolor are unchanged, still sampled from the reference.
+% ---------------------------------------------------------------------------
+\RequirePackage{xcolor}
+% ধারণা / concept -- violet
+\definecolor{ideaframe}   {rgb}{0.494,0.353,0.769}   % #7E5AC4  rule
+\definecolor{ideatitle}   {rgb}{0.698,0.608,0.910}   % #B29BE8  title band
+\definecolor{ideaback}    {rgb}{0.941,0.922,0.988}   % #F0EBFC  body fill
+% উদাহরণ / example -- yellow
+\definecolor{exframe}     {rgb}{0.749,0.565,0.078}   % #BF9014
+\definecolor{extitle}     {rgb}{0.910,0.737,0.243}   % #E8BC3E
+\definecolor{exback}      {rgb}{1.000,0.973,0.859}   % #FFF8DB
+% সমাধান / solution -- orange
+\definecolor{solframe}    {rgb}{0.839,0.455,0.125}   % #D67420
+\definecolor{soltitle}    {rgb}{0.949,0.651,0.361}   % #F2A65C
+\definecolor{solback}     {rgb}{1.000,0.933,0.863}   % #FFEEDC
+% মন্তব্য / comment -- grey
+\definecolor{remframe}    {rgb}{0.431,0.439,0.463}   % #6E7076
+\definecolor{remtitle}    {rgb}{0.620,0.627,0.651}   % #9EA0A6
+\definecolor{remback}     {rgb}{0.933,0.933,0.941}   % #EEEEF0
+% unchanged
+\definecolor{pointcolor}  {rgb}{0.7,  0.1,  0.1}     % dark red -- the [N] marks
+\definecolor{linkcolor}   {rgb}{0.0,  0.0,  1.0}     % pure blue -- hyperlinks
+
+% ---------------------------------------------------------------------------
+% 4. HEADER / FOOTER   (rule 0.4pt, author left in blue, series right)
+% ---------------------------------------------------------------------------
+\RequirePackage{fancyhdr}
+\newcommand{\bnh@author}{}
+\newcommand{\bnh@authorurl}{}
+\newcommand{\bnh@series}{}
+\newcommand{\hauthor}[2][]{\renewcommand{\bnh@authorurl}{#1}%
+                           \renewcommand{\bnh@author}{#2}}
+\newcommand{\hseries}[1]{\renewcommand{\bnh@series}{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\ifx\bnh@authorurl\empty
+                \textcolor{linkcolor}{\bnh@author}%
+              \else \href{\bnh@authorurl}{\bnh@author}\fi}
+\fancyhead[R]{\bnh@series}
+\fancyfoot[C]{\thepage}
+
+% ---------------------------------------------------------------------------
+% 5. SECTIONING   (sans-serif bold; \Large = 14.4pt, exactly as measured)
+% ---------------------------------------------------------------------------
+\RequirePackage{sectsty}
+\allsectionsfont{\sffamily}
+
+\newcommand{\handouttitle}[1]{%
+  \begin{center}\huge\bfseries #1\end{center}\par\vspace{0.5\baselineskip}}
+
+% ---------------------------------------------------------------------------
+% 6. PARAGRAPHS AND LISTS   (article 11pt defaults, as measured)
+% ---------------------------------------------------------------------------
+\RequirePackage{enumitem}
+\setlength{\parindent}{0.2in}      % measured: 14.400bp
+\setlength{\parskip}{0pt}          % main text: indent, no inter-paragraph glue
+
+% Bangla letter labels for problem parts: (ক) (খ) (গ) ...
+% \bnalph takes a COUNTER NAME, like LaTeX's own \alph, so it works both as an
+% enumitem label and inside \ref.
+% Defined the same way LaTeX defines \alph, so it stays expandable and survives
+% the \protected@edef that enumitem runs over labels.
+\def\bnh@alph#1{%
+  \ifcase#1 \or ক\or খ\or গ\or ঘ\or ঙ\or চ\or ছ\or জ\or ঝ\or ঞ%
+           \or ট\or ঠ\or ড\or ঢ\or ণ\or ত\or থ\or দ\or ধ\or ন\fi}
+% Two variants, and both are needed:
+%   \bnalphx  expandable  -> used for ref=, so \label freezes the CURRENT item's
+%                            letter into the .aux at the moment \label is read.
+%   \bnalph   protected   -> used for label=, so enumitem's \protected@edef does
+%                            not freeze it at list-creation time, when the counter
+%                            is still 0 and the label would come out empty.
+% Using one variant for both gives either blank labels or wrong \ref targets.
+\def\bnalphx#1{\expandafter\bnh@alph\csname c@#1\endcsname}
+\protected\def\bnalph#1{\bnalphx{#1}}
+
+% Level 1 follows the digit set: Bangla letters by default, Latin under
+% [latinnum].  Level 2 stays roman in both cases.
+%
+% Labels are set through LaTeX's own \theenumi / \labelenumi rather than
+% enumitem's label= and ref= keys.  Those keys run \protected@edef over their
+% value at \setlist time, when the counter is still 0 -- which silently produced
+% empty labels, and empty or wrong \ref targets.  Going through \theenumi keeps
+% everything expanded at the right moment.
+\setlist[enumerate,1]{topsep=\medskipamount, itemsep=\medskipamount, parsep=0pt}
+\setlist[enumerate,2]{topsep=\medskipamount, itemsep=\medskipamount, parsep=0pt}
+
+% \theenumi uses the EXPANDABLE form: \refstepcounter bakes the current letter
+% into the .aux, so \ref points at the right part.
+% \labelenumi uses the PROTECTED form: enumitem freezes \@itemlabel at list
+% start, when the counter is 0, and only a protected macro survives that to be
+% expanded per item.  Swapping either one breaks in a different, silent way.
+\ifbnh@bnnum
+  \renewcommand{\theenumi}{\bnalphx{enumi}}
+  \renewcommand{\labelenumi}{(\bnalph{enumi})}
+\else
+  \renewcommand{\theenumi}{\alph{enumi}}
+  \renewcommand{\labelenumi}{(\theenumi)}
+\fi
+\renewcommand{\theenumii}{\roman{enumii}}
+\renewcommand{\labelenumii}{(\theenumii)}
+\tolerance=2000
+\emergencystretch=3em          % Bangla does not hyphenate: give TeX slack
+\hbadness=2000
+
+% ---------------------------------------------------------------------------
+% 7. BOXES   (tcolorbox; frame 0.5mm, sharp corners, 5mm text inset,
+%             breakable with no rule at the break -- as in the reference)
+%    coltitle is BLACK, not the reference's white: the title bands are light.
+%    colbacktitle is set per environment; without it tcolorbox would fall back
+%    to colframe and the heading colour would never appear.
+% ---------------------------------------------------------------------------
+\RequirePackage[most]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\tcbset{bnh@base/.style={
+  enhanced jigsaw, breakable,
+  width=\textwidth,
+  arc=2mm, auto outer arc,
+  boxrule=0.5mm,
+  toprule at break=0mm, bottomrule at break=0mm,
+  leftrule=0.5mm, rightrule=0.5mm,
+  boxsep=0mm, left=5mm, right=5mm, top=2.8mm, bottom=2.8mm,
+  toptitle=1.2mm, bottomtitle=1.2mm,
+  coltitle=black, fonttitle=\bfseries,
+  before skip=7pt, after skip=7pt,
+  parbox=false,
+}}
+
+% inside every box: no paragraph indent, one blank line between paragraphs
+\newcommand{\bnh@boxpar}{\setlength{\parindent}{0pt}\setlength{\parskip}{\baselineskip}}
+
+\newcounter{idea}
+\newcounter{example}
+% Default labels are Bangla.  To go back to English, redefine any of these in
+% the preamble of a handout, e.g. \renewcommand{\ideaname}{Idea}.
+\newcommand{\ideaname}{ধারণা}
+\newcommand{\examplename}{উদাহরণ}
+\newcommand{\solutionname}{সমাধান}
+\newcommand{\remarkname}{মন্তব্য}
+\newcommand{\problemname}{সমস্যা}
+
+% Sentence-terminator used after run-in labels.  Bangla takes the daari; set it
+% to {.} if a handout ever switches its labels back to English.
+\newcommand{\labelstop}{।}
+
+\newenvironment{idea}[1][]{%
+  \refstepcounter{idea}%
+  \begin{tcolorbox}[bnh@base, colframe=ideaframe, colback=ideaback,
+    colbacktitle=ideatitle,
+    title={\ideaname\ \theidea\ifblank{#1}{}{: #1}}]%
+  \bnh@boxpar}{\end{tcolorbox}}
+
+\newenvironment{example}[1][]{%
+  \refstepcounter{example}%
+  \begin{tcolorbox}[bnh@base, colframe=exframe, colback=exback,
+    colbacktitle=extitle,
+    title={\examplename\ \theexample\ifblank{#1}{}{: #1}}]%
+  \bnh@boxpar}{\end{tcolorbox}}
+
+\newenvironment{solbox}{%
+  \begin{tcolorbox}[bnh@base, colframe=solframe, colback=solback,
+    colbacktitle=soltitle,
+    title={\solutionname}]\bnh@boxpar}{\end{tcolorbox}}
+
+\newenvironment{remark}[1][]{%
+  \begin{tcolorbox}[bnh@base, colframe=remframe, colback=remback,
+    colbacktitle=remtitle,
+    title={\remarkname\ifblank{#1}{}{: #1}}]%
+  \bnh@boxpar}{\end{tcolorbox}}
+
+% ---------------------------------------------------------------------------
+% 8. PROBLEMS   ->   [3] Problem 12 (Morin 2.17).  text ...
+%    The [N] marker hangs 20.8bp into the left margin, in dark red.
+% ---------------------------------------------------------------------------
+\newcounter{problem}
+\newcounter{pointtotal}
+
+% \bnh@fmtnum renders a raw number in whichever digit set is active
+\newcommand{\bnh@fmtnum}[1]{\ifbnh@bnnum\bnnumber{#1}\else#1\fi}
+
+\newcommand{\bnh@marker}[1]{%
+  \llap{\textcolor{pointcolor}{[\bnh@fmtnum{#1}]}\hspace{9.25bp}}}
+
+% \prob[<source>]{<points>}
+\newcommand{\prob}[2][]{%
+  \par\medskip\refstepcounter{problem}%
+  \addtocounter{pointtotal}{#2}%
+  \noindent\bnh@marker{#2}\textbf{\problemname\ \theproblem}%
+  \ifblank{#1}{}{ (#1)}\labelstop\ \ignorespaces}
+
+% run-in bold "Solution." for a problem (not the titled box)
+\newcommand{\solpar}{\par\medskip\noindent\textbf{\solutionname\labelstop}\ \ignorespaces}
+
+% wrap a worked solution so [nosol] can drop it from the student edition
+\ifbnh@showsol
+  \newenvironment{sol}{\solpar}{\par}
+\else
+  \RequirePackage{comment}
+  \excludecomment{sol}
+\fi
+
+% total point count -- needs two XeLaTeX passes
+\AtEndDocument{\immediate\write\@auxout{%
+  \string\gdef\string\bnh@totalpts{\thepointtotal}}}
+\newcommand{\totalpoints}{%
+  \ifdefined\bnh@totalpts \textbf{\textcolor{pointcolor}{\bnh@fmtnum{\bnh@totalpts}}}%
+  \else \textbf{\textcolor{pointcolor}{??}}\fi}
+
+% ---------------------------------------------------------------------------
+% 9. BENGALI NUMERALS (option [bnnum])
+% ---------------------------------------------------------------------------
+\newcommand{\bndigit}[1]{%
+  \ifcase#1 ০\or ১\or ২\or ৩\or ৪\or ৫\or ৬\or ৭\or ৮\or ৯\fi}
+\newcommand{\bnnumber}[1]{\expandafter\bnh@digits\number#1\relax}
+\def\bnh@digits#1{\ifx\relax#1\else\bndigit{#1}\expandafter\bnh@digits\fi}
+
+\ifbnh@bnnum
+  \renewcommand{\thesection}{\bnnumber{\value{section}}}
+  \renewcommand{\thesubsection}{\thesection.\bnnumber{\value{subsection}}}
+  \renewcommand{\theidea}{\bnnumber{\value{idea}}}
+  \renewcommand{\theexample}{\bnnumber{\value{example}}}
+  \renewcommand{\theproblem}{\bnnumber{\value{problem}}}
+  \renewcommand{\thepage}{\bnnumber{\value{page}}}
+  \renewcommand{\theequation}{\bnnumber{\value{equation}}}
+\fi
+
+% ---------------------------------------------------------------------------
+% 10. HYPERREF  (loaded last; pure-blue coloured links, as measured)
+% ---------------------------------------------------------------------------
+\RequirePackage{graphicx}
+\RequirePackage[colorlinks=true, linkcolor=linkcolor, urlcolor=linkcolor,
+                citecolor=linkcolor, unicode=true]{hyperref}
+
+\endinput
