@@ -1,0 +1,62 @@
+name: Build handout PDFs
+
+# Runs whenever anything under tex/ changes on main.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tex/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:        # also lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write           # needed so the job can commit the PDFs back
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Compile every chapter, both editions
+        uses: xu-cheng/texlive-action@v2
+        with:
+          scheme: full      # full TeX Live: includes ucharclasses, fontspec, tex-gyre
+          run: |
+            set -e
+            cd tex
+            mkdir -p ../pdf
+
+            for i in $(seq 0 21); do
+              n=$(printf "%02d" "$i")
+              echo "=== chapter $i ==="
+
+              # Full edition: solutions included. Two passes so \totalpoints resolves.
+              xelatex -interaction=nonstopmode -halt-on-error -jobname="ch${n}-full" "$i.tex"
+              xelatex -interaction=nonstopmode -halt-on-error -jobname="ch${n}-full" "$i.tex"
+
+              # Student edition: the nosol option is injected here, not in the .tex file.
+              xelatex -interaction=nonstopmode -halt-on-error -jobname="ch${n}-student" \
+                "\PassOptionsToPackage{nosol}{bnhandout}\input{$i.tex}"
+              xelatex -interaction=nonstopmode -halt-on-error -jobname="ch${n}-student" \
+                "\PassOptionsToPackage{nosol}{bnhandout}\input{$i.tex}"
+
+              mv "ch${n}-full.pdf" "ch${n}-student.pdf" ../pdf/
+            done
+
+            # Clean up the build litter so it never gets committed.
+            rm -f *.aux *.log *.out *.toc *.fls *.fdb_latexmk
+
+      - name: Commit the rebuilt PDFs
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pdf
+          if git diff --staged --quiet; then
+            echo "No PDF changed; nothing to commit."
+          else
+            git commit -m "Rebuild PDFs [skip ci]"
+            git push
+          fi
