@@ -9,6 +9,12 @@ on:
       - '.github/workflows/build.yml'
   workflow_dispatch:        # also lets you run it by hand from the Actions tab
 
+# Only one build at a time. A new push cancels a build already in progress,
+# since that older build would produce stale PDFs anyway.
+concurrency:
+  group: build-pdfs
+  cancel-in-progress: true
+
 permissions:
   contents: write           # needed so the job can commit the PDFs back
 
@@ -58,5 +64,6 @@ jobs:
             echo "No PDF changed; nothing to commit."
           else
             git commit -m "Rebuild PDFs [skip ci]"
+            git pull --rebase --autostash
             git push
           fi
